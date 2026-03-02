@@ -33,3 +33,7 @@ block_size = 8  # context window size
 
 x = train_data[:block_size]    # input sequence
 y = train_data[1:block_size+1] # target sequence (shifted by 1)
+for t in range(block_size):         # loop through each position in the block
+    context = x[:t+1]               # context grows: 1 char on first step, 2 on second, up to block_size
+    target = y[t]                   # the correct next character to predict at this step
+    print('when input is', context, 'target is', target)  # show all 8 training examples inside this block
